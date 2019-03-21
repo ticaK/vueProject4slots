@@ -16,8 +16,10 @@
 
          <div slot-scope="todoScope">
            <!-- pristupamo informacijama iz child komponente -->
-           <h3>{{todoScope.todo.text}}</h3>
-          <h4> {{todoScope.todo.isCompleted ? "bravo" : "neee"}}</h4>
+           <h3>{{todoScope.todo.text | uncapitalize}}</h3>
+
+           <!-- capitalize je filter koji smo u main napravili globalno -->
+          <h4> {{todoScope.todo.isCompleted | emoji}}</h4>
          </div>
 
        </TodoList>
@@ -53,6 +55,13 @@ export default {
         
         
       ]
+    }
+  },
+  filters:{
+
+    emoji(value){
+      return value ? '+1' :':-1:'
+      
     }
   }
 }
